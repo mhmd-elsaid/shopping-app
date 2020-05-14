@@ -1,0 +1,74 @@
+ [
+        {
+            "id": 1,
+            "name" : "mobile",
+            "quantity": 5,
+            "image": "../images/mob.png",
+            "price": 2000,
+            "num": 0
+        },
+        {
+            "id": 2,
+            "name" : "laptop",
+            "quantity": 6,
+            "image": "../images/laptop.png",
+            "price": 4000,
+            "num": 0
+        },
+        {
+            "id": 3,
+            "name" : "car",
+            "quantity": 3,
+            "image": "../images/car.png",
+            "price": 20000,
+            "num": 0
+        },
+        {
+            "id": 4,
+            "name" : "iphone",
+            "quantity": 10,
+            "image": "../images/iphone.png",
+            "price": 1500,
+            "num": 0
+        },
+        {
+            "id": 5,
+            "name" : "tablet",
+            "quantity": 7,
+            "image": "../images/tablet.png",
+            "price": 2000,
+            "num": 0
+        },
+        {
+            "id": 6,
+            "name" : "camera",
+            "quantity": 8,
+            "image": "../images/camera.png",
+            "price": 2000,
+            "num": 0
+        },
+        {
+            "id": 7,
+            "name" : "microphone",
+            "quantity": 11,
+            "image": "../images/microphone.png",
+            "price": 200,
+            "num": 0
+        },
+        {
+            "id": 8,
+            "name" : "mobile",
+            "quantity": 12,
+            "image": "../images/mob.png",
+            "price": 2500,
+            "num": 0
+        },
+        {
+            "id": 9,
+            "name" : "tablet",
+            "quantity": 14,
+            "image": "../images/tablet.png",
+            "price": 150,
+            "num": 0
+        }
+]
