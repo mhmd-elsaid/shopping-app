@@ -5,10 +5,9 @@ import { FaShoppingCart } from "react-icons/fa";
 class Header extends Component {
   state = {totalProducts:[]};
   render() {
-    const selectedProducts = this.props.totalProducts
     return (
       <nav className="navbar navbar-light bg-light container-fluid mb-4" >
-        <Link className="navbar-brand" to={{pathname:`/checkout` , query:selectedProducts}}  >
+        <Link className="navbar-brand" to={{pathname:`/checkout`}}  >
           <FaShoppingCart className="text-primary h2"/>
           <span className="badge badge-pill badge-secondary m-2">
             {this.props.totalProducts.length}

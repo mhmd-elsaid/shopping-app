@@ -38,7 +38,7 @@ class Product extends Component {
               backgroundColor: "#333",
             }}
             className="card-body"
-            src={this.props.product.image}
+            src=""
             alt=""
           />
           <div className="row d-flex justify-content-center card-footer bg-white">

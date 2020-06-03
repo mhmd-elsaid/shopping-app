@@ -1,50 +1,57 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Header from "./header";
-import ProductData from "../data/products.json";
-import ProductsList from "./productsList";
+import Product from "./product";
+import { addItem , removeItem }from "../redux/actions";
 
 class Home extends Component {
-  state = {};
+  state = {products : []};
   /* handle product increment */
-  handleIncrement = (product) => {
-    const products = [...this.state.products];
-    const index = products.indexOf(product);
-    products[index] = { ...product };
-    if (products[index].quantity > 0) {
-      products[index].num++;
-      products[index].quantity--;
-      this.setState({ products });
-    }
+  handleIncrement = (item) => {
+    this.props.addItem(item);
+    this.setState({products: [...this.props.items] })
   };
   /* handle product decrement */
-  handleDecrement = (product) => {
-    const products = [...this.state.products];
-    const index = products.indexOf(product);
-    products[index] = { ...product };
-    if (products[index].num > 0) {
-      products[index].num--;
-      products[index].quantity++;
-      this.setState({ products });
-    }
+  handleDecrement = (item) => {
+    this.props.removeItem(item);
+    this.setState({products: [...this.props.items] })
   };
   render() {
-    if (!this.state.products) {
-      this.state.products = [...ProductData];
+    if (this.state.products.length === 0) {
+      this.setState({products: [...this.props.items] })
     }
     return (
-      <section className="container-fluid">
+      <section className='container-fluid px-0'>
         <Header totalProducts={this.state.products.filter((p) => p.num > 0)} />
-        <section className="container">
-          <ProductsList
-            className="container"
-            products={this.state.products}
-            onIncrement={this.handleIncrement}
-            onDecrement={this.handleDecrement}
-          />
+        <section className='container'>
+          <div className='row'>
+            {this.state.products.map((productDetails) => {
+              return (
+                <Product
+                  key={productDetails.id}
+                  className='product-wrapper col-4 mb-4 card'
+                  product={productDetails}
+                  onIncrement={this.handleIncrement}
+                  onDecrement={this.handleDecrement}
+                />
+              );
+            })}
+          </div>
         </section>
       </section>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    items: state.items,
+  };
+};
+const mapDispatchToProps= (dispatch)=>{  
+  return{
+      addItem: (item)=>{dispatch(addItem(item))},
+      removeItem: (item)=>{dispatch(removeItem(item))}
+  }
+}
+export default connect(mapStateToProps , mapDispatchToProps)(Home);

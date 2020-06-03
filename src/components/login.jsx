@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 
 class Login extends Component {
   state = {};
@@ -9,30 +8,28 @@ class Login extends Component {
     this.formValidation();
   }
   formValidation () {
-    // this.formValidation()
     let emailValid , passwordValid ;
-    if (/^\w+@[a-z]+\.com$/i.test(document.getElementById('email').value)) {        
+    emailValid = /^\w+@[a-z]+\.com$/i.test(document.getElementById('email').value);
+    passwordValid = /^[0-9a-zA-Z\W]{3,8}$/g.test(document.getElementById('password').value);
+    if (emailValid) {        
         document.getElementById('email').style.border = '1px solid #ced4da'; 
-        emailValid= true;
-
     } else {
         document.getElementById('email').style.border = '1px solid red';
     }
     // password validation   
-    if (/^[0-9a-zA-Z\W]{0,8}$/g.test(document.getElementById('password').value)) {
-        document.getElementById('email').style.border = '1px solid #ced4da';
-        passwordValid = true;
+    if (passwordValid) {
+        document.getElementById('password').style.border = '1px solid #ced4da';
     } else {
         document.getElementById('password').style.border = '1px solid red';
     }
     if (emailValid && passwordValid) {
-        
+        document.getElementById("submitBtn").disabled = false;
     }
   }
   render() {
     return (
       <div className="container text-center pb-5">
-        <form action="./home" className="col-6 m-auto pt-5" onSubmit={this.onSubmit}>
+        <form action="./home" className="col-6 m-auto pt-5" >
           <div className="form-control my-5">
             <input
               type="email"
@@ -53,7 +50,7 @@ class Login extends Component {
               required
             />
           </div>
-          <button type="submit" className="btn btn-success">Submit</button>
+          <button type="submit" id="submitBtn" disabled className="btn btn-success">Submit</button>
         </form>
       </div>
     );
